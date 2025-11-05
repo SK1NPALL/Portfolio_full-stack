@@ -42,17 +42,17 @@ function Portfolio() {
     return (
         <>  
             {/* nav bar */}
-            <nav className='shadow-lg'>
+            <nav className='sticky top-0 shadow-lg bg-gray-50'>
                 <div className='container mx-auto h-25 items-center flex lg:justify-between md:justify-center md:gap-30'>
 
-                    <h1 className='text-5xl '><b>Portfolio</b></h1>
+                    <h1 className='text-5xl italic text-slate-700'><b>Portfolio</b></h1>
 
                     <div className='flex justify-end gap-6 text-lg'>
 
-                        <a href="#" className='hover:text-red-500' >About me</a>
-                        <a href="#proj" className='hover:text-red-500' >Project</a>
-                        <a href="#acti" className='hover:text-red-500' >Activities</a>
-                        <a href="#" className='hover:text-red-500' >Contact</a>
+                        <a href="#" className='hover:text-gray-300' >About me</a>
+                        <a href="#proj" className='hover:text-gray-300' >Project</a>
+                        <a href="#acti" className='hover:text-gray-300' >Activities</a>
+                        <a href="#cont" className='hover:text-gray-300' >Contact</a>
 
                     </div>
 
@@ -63,13 +63,13 @@ function Portfolio() {
             <main>
 
                 {/* About me */}
-                <article className='mt-4 bg-gray-100 h-130'>
+                <article className='bg-slate-200 h-130' >
 
                     <div className='container mx-auto w-290'>
-                        <h1 className='text-3xl p-4 pt-10'><b>About Me</b></h1>
+                        <h1 className='text-4xl p-4 pt-10 text-slate-500'><b>About Me</b></h1>
                         <div className='flex gap-10 items-center'>
-                            <img className="w-90 " src={img_aboutme} alt="my_picture" />
-                            <p className='text-lg'>{text_aboutme}</p>
+                            <img className="lg:w-100 p-7 md:w-90" src={img_aboutme} alt="my_picture" />
+                            <p className='text-2xl text-slate-500'>{text_aboutme}</p>
                         </div>
                     </div>
 
@@ -80,14 +80,14 @@ function Portfolio() {
 
                     <div className='p-10'>
 
-                        <h1 className='text-3xl text-center'><b>Project</b></h1>
+                        <h1 className='text-4xl text-center text-slate-500'><b>Project</b></h1>
 
                         <div className='grid lg:grid-cols-2 gap-20 my-10'>
 
                             {info_project.map((n, i) => (
 
                                 <>
-                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5 gap-5 items-center'>
+                                    <div className='grid grid-cols-2 border-2 border-slate-400 p-5 gap-5 items-center'>
 
                                         <img key={i} src={n.img} className="w-90" alt="" />
 
@@ -115,14 +115,14 @@ function Portfolio() {
 
                     <div className='p-10'>
 
-                        <h1 className='text-3xl text-center'><b>Activities</b></h1>
+                        <h1 className='text-4xl text-center text-slate-400'><b>Activities</b></h1>
 
                         <div className='grid lg:grid-cols-2 gap-20 my-10'>
 
                             {info_activities.map((n, i) => (
 
                                 <>
-                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5 gap-5 items-center'>
+                                    <div className='grid grid-cols-2 border-2 border-slate-300 p-5 gap-5 items-center'>
 
                                         <img key={i} src={n.img} className="w-90" alt="" />
 
@@ -147,13 +147,13 @@ function Portfolio() {
 
             </main>
 
-            <footer className='flex items-center h-20'>
+            <footer className='flex items-center h-20' id='cont'>
 
                 <div className='flex gap-10 text-lg mx-auto'>
 
                     <h1 className=''>Email: {email}</h1>
-                    <p className=''>Create by SK1NPALL</p>
-                    <a href="#">for admin</a>
+                    <p className=''>Create by : SK1NPALL</p>
+                    <a href="#">admin</a>
 
                 </div>
 
