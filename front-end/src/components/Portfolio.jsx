@@ -23,18 +23,35 @@ function Portfolio() {
 
     }])
 
+    // Activities
+
+    const [info_activities, setInfo_Activities] = useState([
+        {
+
+            img: 'https://hackster.imgix.net/uploads/attachments/1462125/_nZSrwM084x.blob?auto=compress&w=1600&h=1200&fit=min&fm=jpg',
+            text_header: 'Lecturer in FROM CODE TO CIRCUIT CAMP',
+            text_info: 'You wake up in your home—disoriented, alone, and with no memory of who you are. Before you can gather your thoughts, a call comes in: your agency needs you to investigate a mysterious murder case that no one has been able to crack.',
+            github_url: 'https://github.com/AnMayVaa/The_Mystery'
+
+        }
+    ])
+
+    //contact
+    const [email , setEmail] = useState('idontknow@emmmm.com')
+
     return (
-        <>
+        <>  
+            {/* nav bar */}
             <nav className='shadow-lg'>
-                <div className='container mx-auto h-25 items-center flex justify-between'>
+                <div className='container mx-auto h-25 items-center flex lg:justify-between md:justify-center md:gap-30'>
 
                     <h1 className='text-5xl '><b>Portfolio</b></h1>
 
                     <div className='flex justify-end gap-6 text-lg'>
 
                         <a href="#" className='hover:text-red-500' >About me</a>
-                        <a href="#" className='hover:text-red-500' >Project</a>
-                        <a href="#" className='hover:text-red-500' >Activities</a>
+                        <a href="#proj" className='hover:text-red-500' >Project</a>
+                        <a href="#acti" className='hover:text-red-500' >Activities</a>
                         <a href="#" className='hover:text-red-500' >Contact</a>
 
                     </div>
@@ -42,12 +59,14 @@ function Portfolio() {
                 </div>
             </nav>
 
+            {/* main */}
             <main>
 
-                <article className='mt-4 bg-gray-100 h-120'>
+                {/* About me */}
+                <article className='mt-4 bg-gray-100 h-130'>
 
                     <div className='container mx-auto w-290'>
-                        <h1 className='text-3xl p-4'><b>About Me</b></h1>
+                        <h1 className='text-3xl p-4 pt-10'><b>About Me</b></h1>
                         <div className='flex gap-10 items-center'>
                             <img className="w-90 " src={img_aboutme} alt="my_picture" />
                             <p className='text-lg'>{text_aboutme}</p>
@@ -56,11 +75,12 @@ function Portfolio() {
 
                 </article>
 
-                <article className='bg-gray-300'>
+                {/* Project */}
+                <article className='bg-slate-300 ' id='proj'>
 
                     <div className='p-10'>
 
-                        <h1 className='text-3xl'><b>Project</b></h1>
+                        <h1 className='text-3xl text-center'><b>Project</b></h1>
 
                         <div className='grid grid-cols-2 gap-20 my-10'>
 
@@ -69,7 +89,42 @@ function Portfolio() {
                                 <>
                                     <div className='grid grid-cols-2 border-2 border-gray-400 p-5'>
 
-                                        <img key={i} src={n.img} className="" alt="" />
+                                        <img key={i} src={n.img} className="w-90" alt="" />
+
+                                        <div>
+
+                                            <p className='text-2xl'>{n.text_header}</p><br />
+                                            <p className=''>{n.text_info}</p><br />
+                                            <a className='hover:text-blue-500' href={n.github_url}>View on github</a>
+
+                                        </div>
+
+                                    </div>
+
+                                </>
+                            ))}
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                {/* Activities */}
+                <article className='bg-slate-200' id='acti'>
+
+                    <div className='p-10'>
+
+                        <h1 className='text-3xl text-center'><b>Activities</b></h1>
+
+                        <div className='grid grid-cols-2 gap-20 my-10'>
+
+                            {info_activities.map((n, i) => (
+
+                                <>
+                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5'>
+
+                                        <img key={i} src={n.img} className="w-90" alt="" />
 
                                         <div>
 
@@ -91,6 +146,18 @@ function Portfolio() {
                 </article>
 
             </main>
+
+            <footer className='flex items-center h-20'>
+
+                <div className='flex gap-10 text-lg mx-auto'>
+
+                    <h1 className=''>Email: {email}</h1>
+                    <p className=''>Create by SK1NPALL</p>
+                    <a href="#">for admin</a>
+
+                </div>
+
+            </footer>
 
         </>
     )
