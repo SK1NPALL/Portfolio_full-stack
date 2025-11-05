@@ -1,12 +1,11 @@
 import './App.css'
+import Portfolio from './components/Portfolio'
 
 function App() {
 
   return (
     <>
-      <h1 class="text-4xl">
-        Hello world!
-      </h1>
+      <Portfolio/>
     </>
   )
 }
