@@ -82,12 +82,12 @@ function Portfolio() {
 
                         <h1 className='text-3xl text-center'><b>Project</b></h1>
 
-                        <div className='grid grid-cols-2 gap-20 my-10'>
+                        <div className='grid lg:grid-cols-2 gap-20 my-10'>
 
                             {info_project.map((n, i) => (
 
                                 <>
-                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5'>
+                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5 gap-5 items-center'>
 
                                         <img key={i} src={n.img} className="w-90" alt="" />
 
@@ -117,12 +117,12 @@ function Portfolio() {
 
                         <h1 className='text-3xl text-center'><b>Activities</b></h1>
 
-                        <div className='grid grid-cols-2 gap-20 my-10'>
+                        <div className='grid lg:grid-cols-2 gap-20 my-10'>
 
                             {info_activities.map((n, i) => (
 
                                 <>
-                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5'>
+                                    <div className='grid grid-cols-2 border-2 border-gray-400 p-5 gap-5 items-center'>
 
                                         <img key={i} src={n.img} className="w-90" alt="" />
 
