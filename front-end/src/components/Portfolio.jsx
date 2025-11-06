@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router'
 
-function Portfolio() {
+function Portfolio({setScene}) {
 
     // aboutme
     const [img_aboutme, setImg_aboutme] = useState('https://scontent.fbkk22-1.fna.fbcdn.net/v/t39.30808-6/358443385_820188826141721_5999428843989950380_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=GLqH7mMGMnoQ7kNvwGEHBnS&_nc_oc=Adlfslga-QR9TXNUcF5yMZRQJEh79DarkGl9bXx1sp-ZfPiHIpPGGjjN_76BWDKQkOVObC_e6WnpcPYviYpM3KiR&_nc_zt=23&_nc_ht=scontent.fbkk22-1.fna&_nc_gid=itzHdmP4QPgtT19eMSa6_g&oh=00_Afh3MjiJn2A0-9mCOrTdGMYt-qwjoKm_iqEugAIzNVzrlw&oe=6910EA0C')
@@ -38,6 +39,14 @@ function Portfolio() {
 
     //contact
     const [email , setEmail] = useState('idontknow@emmmm.com')
+
+    //change scene func
+    
+    const changeScene = () => {
+
+        setScene(2)
+
+    }
 
     return (
         <>  
@@ -153,7 +162,7 @@ function Portfolio() {
 
                     <h1 className=''>Email: {email}</h1>
                     <p className=''>Create by : SK1NPALL</p>
-                    <a href="#">admin</a>
+                    <Link to="edit" className='hover:text-blue-300'>admin</Link>
 
                 </div>
 
