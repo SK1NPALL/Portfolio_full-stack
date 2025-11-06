@@ -1,7 +1,7 @@
 import './App.css'
 import Portfolio from './components/Portfolio'
 import { Routes, Route } from "react-router";
-import Edit from './components/Edit'
+import Edit from './components/Edit-page/Edit'
 import { useState } from 'react'
 
 function App() {
