@@ -55,8 +55,8 @@ app.put('/aboutme/put' , async (req , res) => {
 
         let newInfo = req.body
 
-        const result = await conn.query('UPDATE aboutme SET img = ? ,info = ?',[newInfo.img , newInfo.info])
-
+        const result = await conn.query('UPDATE aboutme SET ?',[newInfo])
+    
         res.json({
 
             message : 'Update complete!',
