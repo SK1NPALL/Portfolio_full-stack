@@ -1,0 +1,9 @@
+Libary required
+front-end folder
+ - npm
+ - axios
+back-end folder
+ - express
+ - mysql2
+ - cors
+ - dotenv
