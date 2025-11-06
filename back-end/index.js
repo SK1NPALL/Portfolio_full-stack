@@ -22,7 +22,7 @@ const initMySQL = async () => {
 
 }
 
-app.get('/info' , async (req ,res) =>{
+app.get('/aboutme' , async (req ,res) =>{
 
     try{
 
@@ -38,6 +38,32 @@ app.get('/info' , async (req ,res) =>{
 
     }catch(error) {
 
+        console.log(error.message)
+        res.status(500).json({
+            
+            message : 'Something went wrong.'
+
+        })
+
+    }
+
+})
+
+app.put('/aboutme/put' , async (req , res) => {
+
+    try  {
+
+        let newInfo = req.body
+
+        const result = await conn.query('UPDATE aboutme SET img = ? ,info = ?',[newInfo.img , newInfo.info])
+
+        res.json({
+
+            message : 'Update complete!',
+            result : result[0]
+
+        })
+    }catch(error) {
         console.log(error.message)
         res.status(500).json({
             

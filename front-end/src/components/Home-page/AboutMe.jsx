@@ -9,7 +9,7 @@ function AboutMe() {
 
         try {
 
-            const response = await axios.get('http://localhost:8000/info')
+            const response = await axios.get('http://localhost:8000/aboutme')
             
             console.log('fetch api complete!')
 
