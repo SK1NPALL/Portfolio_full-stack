@@ -10,6 +10,7 @@ Back-end folder
 - nodemon (recommeded)
 - mysql2
 - cors
+- multer
 - dotenv
 
 Database
