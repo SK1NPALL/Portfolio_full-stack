@@ -45,21 +45,27 @@ function AboutmeEdit() {
         <>
             <div className='container p-20 text-2xl w-130 '>
 
+
+
                 <h1 className='text-4xl my-3'>About Me Edit</h1>
 
                 <div className='grid grid-rows-3 '>
 
-                    <form className='row-span-2' onSubmit={updateAboutme}>
+                    <form action="http://localhost:8000/multer-test" enctype="multipart/form-data" method="post">
+                        <input type="file" name="uploaded_file" />
+                        <input type="submit" value="Get me the stats!" class="btn btn-default" />
+                    </form>
+
+                    {/* <form className='row-span-2' onSubmit={updateAboutme}>
+
+                        <input type="file" name="file" />
 
                         <p>Image :
 
                             <input
 
-                                type="text"
-                                placeholder="https://... หรือ /uploads/xxx.jpg"
-                                value={img}
-                                onChange={e => setImg(e.target.value)}
-                                
+                                type="file"
+
                                 className='border'>
                             </input>
                         </p>
@@ -74,7 +80,7 @@ function AboutmeEdit() {
                             </textarea></p>
                         <input type="submit" className='p-2 bg-gray-100 my-3 hover:bg-gray-200 text-lg' />
 
-                    </form>
+                    </form> */}
 
                     <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-1 w-50 text-lg h-10'>Go back to edit page</Link>
                     <p className='text-red-600'>{text}</p>
