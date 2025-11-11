@@ -10,24 +10,24 @@ function AboutmeEdit() {
     const [info, setInfo] = useState('')
     const [text, setText] = useState('')
 
-    const updateAboutme = async (e) => {
-        e.preventDefault();
+    const setImageHandle = (e) => {
 
+        setImg(e.target.files[0].name)
+
+    }
+
+    useEffect(() => {
+
+        console.log(img)
+
+    },[img])
+
+    const updateAboutme = async () => {
         let response = null;
 
         try {
-
-            if (img) {
-
-                response = await axios.put('http://localhost:8000/aboutme/put', { img: img })
-            } else if (info) {
-
-                response = await axios.put('http://localhost:8000/aboutme/put', { info: info })
-            } else {
-
-                response = await axios.put('http://localhost:8000/aboutme/put', { img: img, info: info })
-
-            }
+            
+            response = await axios.put('http://localhost:8000/aboutme/put', { img: img, info: info })
 
             console.log('Update complete!', response.data)
             setText('Update complete!')
@@ -45,21 +45,50 @@ function AboutmeEdit() {
         <>
             <div className='container p-20 text-2xl w-130 '>
 
+
+
                 <h1 className='text-4xl my-3'>About Me Edit</h1>
 
                 <div className='grid grid-rows-3 '>
 
-                    <form className='row-span-2' onSubmit={updateAboutme}>
+                    <form action="http://localhost:8000/multer-test" 
+                    className='row-span-2' 
+                    encType="multipart/form-data" 
+                    method="post" 
+                    onSubmit={updateAboutme}>
+
+                        <p>Image :
+                            
+                            <input type="file" 
+                            name="uploaded_file" 
+                            onChange={setImageHandle} 
+                            accept='image/*'
+                            className='border'
+                            /></p>
+
+                        <p>Info :
+                            <textarea
+
+                                value={info}
+                                onChange={e => setInfo(e.target.value)}
+                                className='border h-50 w-full resize-none text-lg'
+                                placeholder='Enter text'>
+
+                            </textarea></p>
+                        <input type="submit" className='p-2 bg-gray-100 my-3 hover:bg-gray-200 text-lg' value={'Update'}/>
+
+                    </form>
+
+                    {/* <form className='row-span-2' onSubmit={updateAboutme}>
+
+                        <input type="file" name="file" />
 
                         <p>Image :
 
                             <input
 
-                                type="text"
-                                placeholder="https://... หรือ /uploads/xxx.jpg"
-                                value={img}
-                                onChange={e => setImg(e.target.value)}
-                                
+                                type="file"
+
                                 className='border'>
                             </input>
                         </p>
@@ -74,7 +103,7 @@ function AboutmeEdit() {
                             </textarea></p>
                         <input type="submit" className='p-2 bg-gray-100 my-3 hover:bg-gray-200 text-lg' />
 
-                    </form>
+                    </form> */}
 
                     <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-1 w-50 text-lg h-10'>Go back to edit page</Link>
                     <p className='text-red-600'>{text}</p>
