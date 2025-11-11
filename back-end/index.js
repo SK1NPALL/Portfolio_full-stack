@@ -88,9 +88,12 @@ app.put('/aboutme/put', async (req, res) => {
         let bodyInfo = req.body
         let newInfo = ''
 
-        if(bodyInfo.img) {
+        if(bodyInfo.img && bodyInfo.info) {
 
-            newInfo = {img : bodyInfo.img}
+            newInfo = {
+                img : bodyInfo.img ,
+                info : bodyInfo.info
+            }            
 
         } else if(bodyInfo.info) {
 
@@ -98,10 +101,7 @@ app.put('/aboutme/put', async (req, res) => {
 
         }else {
 
-            newInfo = {
-                img : bodyInfo.img ,
-                info : bodyInfo.info
-             }
+            newInfo = {img : bodyInfo.img}
 
         }
 
