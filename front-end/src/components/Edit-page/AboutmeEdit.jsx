@@ -10,24 +10,24 @@ function AboutmeEdit() {
     const [info, setInfo] = useState('')
     const [text, setText] = useState('')
 
-    const updateAboutme = async (e) => {
-        e.preventDefault();
+    const setImageHandle = (e) => {
 
+        setImg(e.target.files[0].name)
+
+    }
+
+    useEffect(() => {
+
+        console.log(img)
+
+    },[img])
+
+    const updateAboutme = async () => {
         let response = null;
 
         try {
-
-            if (img) {
-
-                response = await axios.put('http://localhost:8000/aboutme/put', { img: img })
-            } else if (info) {
-
-                response = await axios.put('http://localhost:8000/aboutme/put', { info: info })
-            } else {
-
-                response = await axios.put('http://localhost:8000/aboutme/put', { img: img, info: info })
-
-            }
+            
+            response = await axios.put('http://localhost:8000/aboutme/put', { img: img, info: info })
 
             console.log('Update complete!', response.data)
             setText('Update complete!')
@@ -51,9 +51,32 @@ function AboutmeEdit() {
 
                 <div className='grid grid-rows-3 '>
 
-                    <form action="http://localhost:8000/multer-test" enctype="multipart/form-data" method="post">
-                        <input type="file" name="uploaded_file" />
-                        <input type="submit" value="Get me the stats!" class="btn btn-default" />
+                    <form action="http://localhost:8000/multer-test" 
+                    className='row-span-2' 
+                    encType="multipart/form-data" 
+                    method="post" 
+                    onSubmit={updateAboutme}>
+
+                        <p>Image :
+                            
+                            <input type="file" 
+                            name="uploaded_file" 
+                            onChange={setImageHandle} 
+                            accept='image/*'
+                            className='border'
+                            /></p>
+
+                        <p>Info :
+                            <textarea
+
+                                value={info}
+                                onChange={e => setInfo(e.target.value)}
+                                className='border h-50 w-full resize-none text-lg'
+                                placeholder='Enter text'>
+
+                            </textarea></p>
+                        <input type="submit" className='p-2 bg-gray-100 my-3 hover:bg-gray-200 text-lg' value={'Update'}/>
+
                     </form>
 
                     {/* <form className='row-span-2' onSubmit={updateAboutme}>

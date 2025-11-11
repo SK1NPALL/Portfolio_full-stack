@@ -26,9 +26,8 @@ app.post('/multer-test', upload.single('uploaded_file'), async (req, res) => {
 
     try {
 
-        res.json(
-            req.file
-        )
+        res.status(204).end() 
+        console.log("Update complete!")
 
     } catch (error) {
 
@@ -86,7 +85,25 @@ app.put('/aboutme/put', async (req, res) => {
 
     try {
 
-        let newInfo = req.body
+        let bodyInfo = req.body
+        let newInfo = ''
+
+        if(bodyInfo.img) {
+
+            newInfo = {img : bodyInfo.img}
+
+        } else if(bodyInfo.info) {
+
+            newInfo = {info : bodyInfo.info}
+
+        }else {
+
+            newInfo = {
+                img : bodyInfo.img ,
+                info : bodyInfo.info
+             }
+
+        }
 
         const result = await conn.query('UPDATE aboutme SET ?', [newInfo])
 

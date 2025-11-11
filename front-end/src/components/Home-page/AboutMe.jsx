@@ -44,9 +44,9 @@ function AboutMe() {
             <article className='bg-slate-200 h-130' >
 
                 <div className='container mx-auto w-290'>
-                    <h1 className='text-4xl p-4 pt-10 text-slate-500'><b>About Me</b></h1>
+                    
                     <div className='flex gap-10 items-center'>
-                        <img className="lg:w-100 p-7 md:w-90" src={img_aboutme} alt="my_picture" />
+                        <img className="lg:w-100 p-7 md:w-90" src={`http://localhost:8000/uploads/${img_aboutme}`} alt="my_picture" />
                         <p className='text-2xl text-slate-500'>{text_aboutme}</p>
                     </div>
                 </div>
