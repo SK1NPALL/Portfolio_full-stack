@@ -22,7 +22,7 @@ function AboutmeEdit() {
 
         try{
 
-            const response = await axios('http://localhost:8000/aboutme')
+            const response = await axios.get('http://localhost:8000/aboutme')
 
             setInfo(response.data.info[0].info)
 
