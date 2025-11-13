@@ -54,6 +54,8 @@ const initMySQL = async () => {
 
 }
 
+// ABOUT ME
+
 app.get('/aboutme', async (req, res) => {
 
     try {
@@ -118,6 +120,33 @@ app.put('/aboutme/put', async (req, res) => {
         res.status(500).json({
 
             message: 'Something went wrong.'
+
+        })
+
+    }
+
+})
+
+// PROJECT
+
+app.get('/project/get', async(req , res) => {
+
+    try {
+
+        const result = await conn.query('SELECT * FROM project')
+        res.json({
+
+            massge: "Get info complete!",
+            info : result[0]
+
+        })
+
+    }catch(error) {
+
+        console.log(error.message)
+        res.status(500).json({
+
+            message : "Something went wrong."
 
         })
 

@@ -1,24 +1,40 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 function Project() {
 
     // project
-    const [info_project, setInfo_project] = useState([{
+    const [info_project, setInfo_project] = useState([])
 
-        img: 'https://img.itch.zone/aW1hZ2UvMzc3NzM2OC8yMjQ3ODYwMC5qcGc=/347x500/yrEN1e.jpg',
-        text_header: 'Unity 2D game',
-        text_info: 'You wake up in your home—disoriented, alone, and with no memory of who you are. Before you can gather your thoughts, a call comes in: your agency needs you to investigate a mysterious murder case that no one has been able to crack.',
-        github_url: 'https://github.com/AnMayVaa/The_Mystery'
+    // Fetch api
 
-    }, {
+    const fetchAPI = async () => {
 
-        img: 'https://img.itch.zone/aW1hZ2UvMzc3NzM2OC8yMjQ3ODYwMC5qcGc=/347x500/yrEN1e.jpg',
-        text_header: 'Unity 2D game',
-        text_info: 'You wake up in your home—disoriented, alone, and with no memory of who you are. Before you can gather your thoughts, a call comes in: your agency needs you to investigate a mysterious murder case that no one has been able to crack.',
-        github_url: 'https://github.com/AnMayVaa/The_Mystery'
+        try {
 
-    }])
+            const response = await axios.get('http://localhost:8000/project/get')
+
+            console.log("PROJECT,fetch api complete!")
+
+            setInfo_project(response.data.info)
+
+        } catch (error) {
+
+            console.log('Something went wrong.' + error.massege)
+
+        }
+
+    }
+
+    //Do when ride
+    useEffect(() => {
+
+        fetchAPI()
+
+    },[])
+
     return (
         <>
             {/* Project */}
@@ -39,9 +55,9 @@ function Project() {
 
                                     <div>
 
-                                        <p className='text-2xl'>{n.text_header}</p><br />
+                                        <p className='text-2xl'>{n.text_head}</p><br />
                                         <p className=''>{n.text_info}</p><br />
-                                        <a className='hover:text-blue-500' href={n.github_url}>View on github</a>
+                                        <a className='hover:text-blue-500' href={n.text_link} target='_blank'>View on github</a>
 
                                     </div>
 

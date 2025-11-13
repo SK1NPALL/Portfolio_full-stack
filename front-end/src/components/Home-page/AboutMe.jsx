@@ -5,13 +5,13 @@ import { useEffect } from 'react'
 
 function AboutMe() {
 
-    const fetchData = async () => {
+    const fetchAPI = async () => {
 
         try {
 
             const response = await axios.get('http://localhost:8000/aboutme')
             
-            console.log('fetch api complete!')
+            console.log('ABOUTME,fetch api complete!')
 
             setImg_aboutme(response.data.info[0].img)
             setText_aboutme(response.data.info[0].info)
@@ -28,9 +28,9 @@ function AboutMe() {
     //Api request 
     useEffect(() => {
 
-        fetchData()
+        fetchAPI()
 
-    })
+    },[])
 
 
     // aboutme

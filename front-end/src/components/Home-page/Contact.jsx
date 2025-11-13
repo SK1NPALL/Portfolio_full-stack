@@ -16,7 +16,7 @@ function Contact() {
 
                     <h1 className=''>Email: {email}</h1>
                     <p className=''>Create by : SK1NPALL</p>
-                    <Link to="edit" className='hover:text-blue-300'>admin</Link>
+                    <Link to="edit" className='hover:text-blue-300' target='_blank'>admin</Link>
 
                 </div>
 

@@ -38,7 +38,7 @@ function Activities() {
 
                                         <p className='text-2xl'>{n.text_header}</p><br />
                                         <p className=''>{n.text_info}</p><br />
-                                        <a className='hover:text-blue-500' href={n.github_url}>View on github</a>
+                                        <a className='hover:text-blue-500' href={n.github_url} target='_blank'>View on github</a>
 
                                     </div>
 
