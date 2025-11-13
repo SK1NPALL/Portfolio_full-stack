@@ -36,24 +36,29 @@ function ProjectEdit() {
 
         <h1 className='text-5xl font-bold'>List</h1>
 
-        <table>
+        <table >
           <thead>
-            <tr className='grid grid-cols-2'>
+            <tr className='grid grid-cols-3 w-200 justify-items-center'>
 
               <th>ID</th>
               <th>Header</th>
+              <th className='w-40'>Process</th>
 
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {data.map((n, i) => (
 
               <>
 
-                <tr key={i} className='grid grid-cols-2 justify-items-center w-100 py-3'>
+                <tr key={i} className='grid grid-cols-3 justify-items-center w-200 py-3 '>
 
                   <td>{n.id}</td>
-                  <td key={i}>{n.text_head}</td>
+                  <td key={i} >{n.text_head}</td>
+                  <td className='grid grid-cols-2 gap-0.5 w-40'>
+                    <button className='bg-gray-200 p-2 hover:bg-gray-300'>Edit</button>
+                    <button className='bg-gray-200 p-2 hover:bg-gray-300'>Delete</button>
+                  </td>
 
                 </tr>
 
