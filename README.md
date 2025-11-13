@@ -4,6 +4,7 @@ front-end folder
 - npm 
 - axios
 - react-router
+- tailwind css
 
 Back-end folder
 - express.js
