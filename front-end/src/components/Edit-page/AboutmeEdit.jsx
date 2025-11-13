@@ -16,6 +16,31 @@ function AboutmeEdit() {
 
     }
 
+    // fetch data
+
+    const fetchAPI = async() => {
+
+        try{
+
+            const response = await axios('http://localhost:8000/aboutme')
+
+            setInfo(response.data.info[0].info)
+
+
+        }catch(error) {
+
+            console.log('Something went wrong.' + error.message)
+
+        }
+
+    }
+
+    useEffect(() => {
+
+        fetchAPI()
+
+    },[])
+
     useEffect(() => {
 
         console.log(img)
