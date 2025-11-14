@@ -97,7 +97,7 @@ function AboutmeEdit() {
                                 value={info}
                                 onChange={e => setInfo(e.target.value)}
                                 className='border h-50 w-full resize-none text-lg'
-                                placeholder='Enter text'>
+                                placeholder='Enter information'>
 
                             </textarea></p>
                         <input type="submit" className='p-2 bg-gray-100 my-3 hover:bg-gray-200 text-lg' value={'Update'}/>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import FormTemp from './FormTemp'
 
 function ProjectEdit() {
 
@@ -80,28 +81,27 @@ function ProjectEdit() {
 
                     <button
 
-                      className='bg-gray-200 p-2 hover:bg-gray-300'
+                      className='bg-gray-200 p-2 hover:bg-gray-300 rounded-4xl'
                       onClick={() => editDisplay === n.id ? setEditDisplay('') : setEditDisplay(n.id)}
 
                     >Edit</button>
 
                     <button
 
-                      className='bg-red-300 p-2 hover:bg-red-400'
+                      className='bg-red-300 p-2 hover:bg-red-400 rounded-4xl'
                       onClick={() => deleteData(n.id)}
 
                     >Delete</button>
 
+                    {editDisplay === n.id ?
+
+                      <FormTemp />
+
+                      : null}
 
                   </td>
 
                 </tr>
-
-                {editDisplay === n.id ?
-
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla minus id doloribus eaque fuga alias voluptas nesciunt quibusdam sequi dolores maxime, nisi amet quaerat eveniet odio ad earum! Nostrum?</p>
-
-                  : null}
 
               </>
 
@@ -117,7 +117,7 @@ function ProjectEdit() {
         >+</button>
         {addDisplay ?
 
-          <p>Add information</p>
+          <FormTemp></FormTemp>
 
           : null}
         <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>
