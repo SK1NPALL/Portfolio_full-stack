@@ -6,6 +6,10 @@ import { useState, useEffect } from 'react'
 function ProjectEdit() {
 
   const [data, setData] = useState([])
+  const [editDisplay, setEditDisplay] = useState(null)
+  const [addDisplay, setAddDisplay] = useState(false)
+
+
   let count = 0
 
   useEffect(() => {
@@ -29,19 +33,19 @@ function ProjectEdit() {
 
   }
 
-  const deleteData = async(id) => {
+  const deleteData = async (id) => {
 
-    try{
-      
-      const response = await axios.delete('http://localhost:8000/project/delete',{ data : {id : id} })
+    try {
 
-      console.log('Delete complete!',response.data)
-      
+      const response = await axios.delete('http://localhost:8000/project/delete', { data: { id: id } })
+
+      console.log('Delete complete!', response.data)
+
       window.location.reload();
 
-    }catch(error) {
+    } catch (error) {
 
-      console.log('Something went wrong.' , error.message)
+      console.log('Something went wrong.', error.message)
 
     }
 
@@ -57,7 +61,7 @@ function ProjectEdit() {
           <thead>
             <tr className='grid grid-cols-3 w-200 justify-items-center'>
 
-              <th>ID</th>
+              <th>Number</th>
               <th>Header</th>
               <th className='w-40'>Process</th>
 
@@ -70,23 +74,34 @@ function ProjectEdit() {
 
                 <tr key={i} className='grid grid-cols-3 justify-items-center w-200 py-3 '>
 
-                  <td>{n.id}</td>
+                  <td>{count += 1}</td>
                   <td key={i} >{n.text_head}</td>
                   <td className='grid grid-cols-2 gap-0.5 w-40'>
 
-                    <button className='bg-gray-200 p-2 hover:bg-gray-300'>Edit</button>
+                    <button
 
-                    <button 
+                      className='bg-gray-200 p-2 hover:bg-gray-300'
+                      onClick={() => editDisplay === n.id ? setEditDisplay('') : setEditDisplay(n.id)}
 
-                    className='bg-gray-200 p-2 hover:bg-gray-300'
-                    onClick={() => deleteData(n.id)}
-                    
+                    >Edit</button>
+
+                    <button
+
+                      className='bg-red-300 p-2 hover:bg-red-400'
+                      onClick={() => deleteData(n.id)}
+
                     >Delete</button>
+
+
                   </td>
 
                 </tr>
 
+                {editDisplay === n.id ?
 
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nulla minus id doloribus eaque fuga alias voluptas nesciunt quibusdam sequi dolores maxime, nisi amet quaerat eveniet odio ad earum! Nostrum?</p>
+
+                  : null}
 
               </>
 
@@ -94,7 +109,17 @@ function ProjectEdit() {
           </tbody>
         </table>
 
+        <button
 
+          className='bg-green-300 hover:bg-green-400 w-20 p-2 font-bold'
+          onClick={() => addDisplay ? setAddDisplay(!addDisplay) : setAddDisplay(!addDisplay)}
+
+        >+</button>
+        {addDisplay ?
+
+          <p>Add information</p>
+
+          : null}
         <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>
       </div>
 

@@ -104,32 +104,6 @@ function AboutmeEdit() {
 
                     </form>
 
-                    {/* <form className='row-span-2' onSubmit={updateAboutme}>
-
-                        <input type="file" name="file" />
-
-                        <p>Image :
-
-                            <input
-
-                                type="file"
-
-                                className='border'>
-                            </input>
-                        </p>
-                        <p>Info :
-                            <textarea
-
-                                value={info}
-                                onChange={e => setInfo(e.target.value)}
-                                className='border h-50 w-full resize-none text-lg'
-                                placeholder='Enter text'>
-
-                            </textarea></p>
-                        <input type="submit" className='p-2 bg-gray-100 my-3 hover:bg-gray-200 text-lg' />
-
-                    </form> */}
-
                     <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-1 w-50 text-lg h-10'>Go back to edit page</Link>
                     <p className='text-red-600'>{text}</p>
 
