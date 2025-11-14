@@ -41,7 +41,7 @@ function AboutMe() {
         <>
 
             {/* About me */}
-            <article className='bg-slate-200 h-130' >
+            <article className='bg-slate-200 h-130 py-10' >
 
                 <div className='container mx-auto w-290'>
                     
