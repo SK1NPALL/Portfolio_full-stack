@@ -29,6 +29,23 @@ function ProjectEdit() {
 
   }
 
+  const deleteData = async(id) => {
+
+    try{
+      
+      const response = await axios.delete('http://localhost:8000/project/delete',{ data : {id : id} })
+
+      console.log('Delete complete!',response.data)
+      
+      window.location.reload();
+
+    }catch(error) {
+
+      console.log('Something went wrong.' , error.message)
+
+    }
+
+  }
 
   return (
     <>
@@ -56,8 +73,15 @@ function ProjectEdit() {
                   <td>{n.id}</td>
                   <td key={i} >{n.text_head}</td>
                   <td className='grid grid-cols-2 gap-0.5 w-40'>
+
                     <button className='bg-gray-200 p-2 hover:bg-gray-300'>Edit</button>
-                    <button className='bg-gray-200 p-2 hover:bg-gray-300'>Delete</button>
+
+                    <button 
+
+                    className='bg-gray-200 p-2 hover:bg-gray-300'
+                    onClick={() => deleteData(n.id)}
+                    
+                    >Delete</button>
                   </td>
 
                 </tr>

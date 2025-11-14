@@ -9,13 +9,13 @@ const multer = require('multer')
 app.use('/uploads', express.static('uploads'))
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    
-    cb(null, file.originalname)
-  }
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+
+        cb(null, file.originalname)
+    }
 })
 
 const upload = multer({ storage: storage })
@@ -26,7 +26,7 @@ app.post('/multer-test', upload.single('uploaded_file'), async (req, res) => {
 
     try {
 
-        res.status(204).end() 
+        res.status(204).end()
         console.log("Update complete!")
 
     } catch (error) {
@@ -90,20 +90,20 @@ app.put('/aboutme/put', async (req, res) => {
         let bodyInfo = req.body
         let newInfo = ''
 
-        if(bodyInfo.img && bodyInfo.info) {
+        if (bodyInfo.img && bodyInfo.info) {
 
             newInfo = {
-                img : bodyInfo.img ,
-                info : bodyInfo.info
-            }            
+                img: bodyInfo.img,
+                info: bodyInfo.info
+            }
 
-        } else if(bodyInfo.info) {
+        } else if (bodyInfo.info) {
 
-            newInfo = {info : bodyInfo.info}
+            newInfo = { info: bodyInfo.info }
 
-        }else {
+        } else {
 
-            newInfo = {img : bodyInfo.img}
+            newInfo = { img: bodyInfo.img }
 
         }
 
@@ -129,28 +129,89 @@ app.put('/aboutme/put', async (req, res) => {
 
 // PROJECT
 
-app.get('/project/get', async(req , res) => {
+app.get('/project/get', async (req, res) => {
 
     try {
 
         const result = await conn.query('SELECT * FROM project')
         res.json({
 
-            massge: "Get info complete!",
-            info : result[0]
+            message: "Get info complete!",
+            info: result[0]
 
         })
 
-    }catch(error) {
+    } catch (error) {
 
         console.log(error.message)
         res.status(500).json({
 
-            message : "Something went wrong."
+            message: "Something went wrong."
 
         })
 
     }
+
+})
+
+app.post('/project/post', async (req, res) => {
+
+    try {
+
+        let info = req.body
+        const result = await conn.query('INSERT project SET ?', info)
+
+
+        res.json({
+
+            message: 'Insert complete!',
+            info_insert : result[0]
+
+        })
+
+    } catch (error) {
+
+        console.log(error.message)
+
+        res.status(500).json({
+
+            message: 'Something went wrong.'
+
+        })
+
+    }
+
+})
+
+app.delete('/project/delete', async (req, res) => {
+
+    try {
+
+        let number = req.body
+
+        const result = await conn.query('DELETE FROM project WHERE id = ?', number.id)
+
+        res.json({
+
+            message: 'Delte complete!',
+            id_deleted: number
+
+        })
+
+    } catch (error) {
+
+        console.log(error.message)
+
+        res.json({
+
+            message: 'Something went wrong.'
+
+        })
+
+
+    }
+
+
 
 })
 
