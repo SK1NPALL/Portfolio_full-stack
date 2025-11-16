@@ -10,6 +10,22 @@ function ProjectEdit() {
   const [editDisplay, setEditDisplay] = useState(null)
   const [addDisplay, setAddDisplay] = useState(false)
 
+  // for file
+
+  const [img, setImg] = useState('')
+  const [textH , setTextH] = useState('')
+  const [textInf , setTextInf] = useState('')
+  const [link , setLink] = useState('')
+  
+
+  // function file image handle
+
+  const setImgHandle = (e) => {
+
+    setImg(e.target.files[0].name)
+
+  }
+
 
   let count = 0
 
@@ -19,6 +35,35 @@ function ProjectEdit() {
 
   }, [])
 
+
+  // call api method
+  
+  // post 
+  const postAPI = async () => {
+
+    try{
+
+      const response = await axios.post('http://localhost:8000/project/post', 
+
+        { img : img,
+          text_head : textH,
+          text_info : textInf,
+          text_link : link
+      })
+
+      window.location.reload()
+      console.log('Post new information complete!' , response.data)
+
+    }catch(error) {
+
+      console.log('Something went wrong.' , error.message )
+
+    }
+
+  }
+
+
+  // fetch api
   const fetchAPI = async () => {
 
     try {
@@ -28,7 +73,7 @@ function ProjectEdit() {
 
     } catch (error) {
 
-      console.log('Something went wrong.', error.massege)
+      console.log('Something went wrong.', error.message)
 
     }
 
@@ -42,7 +87,7 @@ function ProjectEdit() {
 
       console.log('Delete complete!', response.data)
 
-      window.location.reload();
+      window.location.reload()
 
     } catch (error) {
 
@@ -117,7 +162,9 @@ function ProjectEdit() {
         >+</button>
         {addDisplay ?
 
-          <FormTemp></FormTemp>
+          <FormTemp textH={textH} setTextH={setTextH} textInf={textInf} setTextInf={setTextInf} link={link} setLink={setLink} setImgHandle={setImgHandle}
+          
+          doProcess={postAPI}/>
 
           : null}
         <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>

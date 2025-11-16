@@ -20,9 +20,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-// test 
+// For image file save
 
-app.post('/multer-test', upload.single('uploaded_file'), async (req, res) => {
+app.post('/multer', upload.single('uploaded_file'), async (req, res) => {
 
     try {
 
@@ -129,6 +129,8 @@ app.put('/aboutme/put', async (req, res) => {
 
 // PROJECT
 
+
+// GET project
 app.get('/project/get', async (req, res) => {
 
     try {
@@ -154,6 +156,8 @@ app.get('/project/get', async (req, res) => {
 
 })
 
+
+// POST project
 app.post('/project/post', async (req, res) => {
 
     try {
@@ -183,6 +187,7 @@ app.post('/project/post', async (req, res) => {
 
 })
 
+// DELETE project
 app.delete('/project/delete', async (req, res) => {
 
     try {

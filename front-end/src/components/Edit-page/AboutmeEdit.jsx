@@ -76,7 +76,7 @@ function AboutmeEdit() {
 
                 <div className='grid grid-rows-3 '>
 
-                    <form action="http://localhost:8000/multer-test" 
+                    <form action="http://localhost:8000/multer" 
                     className='row-span-2' 
                     encType="multipart/form-data" 
                     method="post" 

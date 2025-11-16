@@ -1,14 +1,22 @@
 import React from 'react'
 
-function FormTemp() {
+function FormTemp({textH , setTextH , textInf , setTextInf , link , setLink , setImgHandle , doProcess}) {
     return (
         <>
 
-            <form className='grid gap-5 text-3xl my-5'>
+            <form className='grid gap-5 text-3xl my-5'
+
+                action="http://localhost:8000/multer" 
+                encType="multipart/form-data" 
+                method="post" 
+                onSubmit={doProcess}
+            >
 
                 {/* image */}
                 <p>Picture : <input type="file"
                     className='border text-lg '
+                    name="uploaded_file" 
+                    onChange={setImgHandle}
                     accept='image/*' 
                     /></p>
 
@@ -16,11 +24,15 @@ function FormTemp() {
                 <p>Topic : <input
                     type="text"
                     className='border text-lg p-1 w-80'
+                    value={textH}
+                    onChange={(e) => setTextH(e.target.value)}
                     placeholder='Enter topic' /></p>
 
                 {/* information */}
                 <p>Information : <textarea
                     className='border w-100 resize-none text-lg p-1 h-50 '
+                    value={textInf}
+                    onChange={(e) => setTextInf(e.target.value)}
                     placeholder='Enter information'
                 /></p>
 
@@ -28,6 +40,8 @@ function FormTemp() {
                 <p>Link : <input
                     type="text"
                     className='border text-lg p-1 '
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)}
                     placeholder='Enter link' /></p>
 
                 {/* submit */}
