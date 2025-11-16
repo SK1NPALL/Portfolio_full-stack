@@ -13,10 +13,14 @@ function ProjectEdit() {
   // for file
 
   const [img, setImg] = useState('')
-  const [textH , setTextH] = useState('')
-  const [textInf , setTextInf] = useState('')
-  const [link , setLink] = useState('')
-  
+  const [textH, setTextH] = useState('')
+  const [textInf, setTextInf] = useState('')
+  const [link, setLink] = useState('')
+
+  // message
+
+  const [massege , setMassege] = useState('') 
+
 
   // function file image handle
 
@@ -37,27 +41,47 @@ function ProjectEdit() {
 
 
   // call api method
-  
+
   // post 
-  const postAPI = async () => {
+  const postAPI = async (e) => {
 
-    try{
+    e.preventDefault()
 
-      const response = await axios.post('http://localhost:8000/project/post', 
+    if (!img || !textH || !textInf || !link ) {
 
-        { img : img,
-          text_head : textH,
-          text_info : textInf,
-          text_link : link
-      })
+      setMassege(<>
+      
+        <ul className='text-red-600 w-100 text-2xl'>
 
-      window.location.reload()
-      console.log('Post new information complete!' , response.data)
+          {img ? null : <li>- Please enter "Image"</li>}
+          {textH ? null : <li>- Please enter "Topic"</li>}
+          {textInf ? null : <li>- Please enter "Information"</li>}
+         {link ? null : <li>- Please enter "Link"</li>}
 
-    }catch(error) {
+        </ul>
+      
+      </>)
+    } else {
 
-      console.log('Something went wrong.' , error.message )
+      try {
 
+        const response = await axios.post('http://localhost:8000/project/post',
+
+          {
+            img: img,
+            text_head: textH,
+            text_info: textInf,
+            text_link: link
+          })
+
+        window.location.reload()
+        console.log('Post new information complete!', response.data)
+
+      } catch (error) {
+
+        console.log('Something went wrong.', error.message)
+
+      }
     }
 
   }
@@ -163,10 +187,13 @@ function ProjectEdit() {
         {addDisplay ?
 
           <FormTemp textH={textH} setTextH={setTextH} textInf={textInf} setTextInf={setTextInf} link={link} setLink={setLink} setImgHandle={setImgHandle}
-          
-          doProcess={postAPI}/>
+
+            doProcess={postAPI} />
+
+         
 
           : null}
+          {massege}
         <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>
       </div>
 

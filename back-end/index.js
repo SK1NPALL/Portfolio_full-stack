@@ -163,7 +163,7 @@ app.post('/project/post', async (req, res) => {
     try {
 
         let info = req.body
-        const result = await conn.query('INSERT project SET ?', info)
+        const result = await conn.query('INSERT INTO project SET ?', info)
 
 
         res.json({
