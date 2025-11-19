@@ -10,6 +10,18 @@ function AboutmeEdit() {
     const [info, setInfo] = useState('')
     const [text, setText] = useState('')
 
+    useEffect(() => {
+
+        fetchAPI()
+
+    },[])
+
+    useEffect(() => {
+
+        console.log(img)
+
+    },[img])
+
     const setImageHandle = (e) => {
 
         setImg(e.target.files[0].name)
@@ -34,18 +46,6 @@ function AboutmeEdit() {
         }
 
     }
-
-    useEffect(() => {
-
-        fetchAPI()
-
-    },[])
-
-    useEffect(() => {
-
-        console.log(img)
-
-    },[img])
 
     const updateAboutme = async () => {
         let response = null;

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import FormTemp from './FormTemp'
 import axios from 'axios'
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 function ActivitiesEdit() {
   const [data, setData] = useState([])
@@ -105,16 +105,18 @@ function ActivitiesEdit() {
 
   const editData = async (id) => {
 
+    let data = {
+
+      ...(img && { img }),
+      ...(textH && { text_head: textH }),
+      ...(textInf && { text_info: textInf }),
+      ...(link && { text_link: link })
+
+    }
+
     try {
 
-      const response = await axios.put(`http://localhost:8000/activ/put/${id}`, {
-
-        img: img,
-        text_head: textH,
-        text_info: textInf,
-        text_link: link
-
-      })
+      const response = await axios.put(`http://localhost:8000/activ/put/${id}`, data)
 
       console.log('Edit complete', id)
 
