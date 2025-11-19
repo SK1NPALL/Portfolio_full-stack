@@ -30,9 +30,6 @@ function ProjectEdit() {
 
   }
 
-
-  let count = 0
-
   useEffect(() => {
 
     fetchAPI()
@@ -47,7 +44,7 @@ function ProjectEdit() {
 
     e.preventDefault()
 
-    if (!img || !textH || !textInf || !link ) {
+    if (!textH || !textInf || !link ) {
 
       setMassege(<>
       
@@ -87,7 +84,7 @@ function ProjectEdit() {
   }
 
 
-  // fetch api
+  // Fetch API
   const fetchAPI = async () => {
 
     try {
@@ -103,6 +100,11 @@ function ProjectEdit() {
 
   }
 
+  // Call put API
+
+
+
+  // Call delete API
   const deleteData = async (id) => {
 
     try {
@@ -125,13 +127,13 @@ function ProjectEdit() {
     <>
       <div className='container grid grid-cols-1 w-50 gap-5 m-10 text-xl'>
 
-        <h1 className='text-5xl font-bold'>List</h1>
+        <h1 className='text-5xl font-bold w-100'>Project List</h1>
 
         <table >
           <thead>
             <tr className='grid grid-cols-3 w-200 justify-items-center'>
 
-              <th>Number</th>
+              <th>ID</th>
               <th>Header</th>
               <th className='w-40'>Process</th>
 
@@ -144,7 +146,7 @@ function ProjectEdit() {
 
                 <tr key={i} className='grid grid-cols-3 justify-items-center w-200 py-3 '>
 
-                  <td>{count += 1}</td>
+                  <td>{n.id}</td>
                   <td key={i} >{n.text_head}</td>
                   <td className='grid grid-cols-2 gap-0.5 w-40'>
 

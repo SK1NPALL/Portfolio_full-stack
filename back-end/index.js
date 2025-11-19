@@ -155,6 +155,38 @@ app.post('/project/post', async (req, res) => {
 
 })
 
+// PUT
+
+app.put('/project/put/:id', async(req, res) => {
+
+    try{   
+        
+        let id = req.params.id
+        let data = req.body
+
+        const result = await conn.query('UPDATE project SET ? WHERE id = ?', [data,id])
+
+        res.json({
+
+            message : "Update complete!",
+            id_update : id,
+            result : result[0]
+
+        })
+
+    }catch(error) {
+
+        console.log(error.message)
+        res.status(500).json({
+
+            message : 'Something went wrong.'
+
+        })
+
+    }
+
+})
+
 // DELETE project
 app.delete('/project/delete', async (req, res) => {
 

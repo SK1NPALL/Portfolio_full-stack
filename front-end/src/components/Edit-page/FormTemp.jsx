@@ -42,7 +42,7 @@ function FormTemp({textH , setTextH , textInf , setTextInf , link , setLink , se
                 {/* submit */}
                 <input
                     type="submit" value={'Confirm'}
-                    className='bg-blue-100 px-4 py-2 hover:bg-blue-200 font-bold text-blue-900' />
+                    className='bg-green-100 px-4 py-2 hover:bg-green-200 font-bold text-green-500' />
 
             </form>
 
