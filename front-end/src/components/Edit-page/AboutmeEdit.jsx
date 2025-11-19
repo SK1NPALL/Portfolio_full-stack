@@ -70,7 +70,7 @@ function AboutmeEdit() {
         <>
             <div className='container p-20 text-2xl w-130 '>
 
-
+                <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-1 w-50 text-lg h-10'>Go back to edit page</Link>
 
                 <h1 className='text-4xl my-3'>About Me Edit</h1>
 
@@ -101,7 +101,7 @@ function AboutmeEdit() {
 
                     </form>
 
-                    <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-1 w-50 text-lg h-10'>Go back to edit page</Link>
+                    
                     <p className='text-red-600'>{text}</p>
 
                 </div>

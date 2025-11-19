@@ -153,6 +153,7 @@ function ActivitiesEdit() {
     <>
       <div className='container grid grid-cols-1 w-50 gap-5 m-10 text-xl'>
 
+        <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>
         <h1 className='text-5xl font-bold w-100'>Activities List</h1>
 
         <table >
@@ -224,7 +225,7 @@ function ActivitiesEdit() {
 
           : null}
         {massege}
-        <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>
+        
       </div>
 
     </>
