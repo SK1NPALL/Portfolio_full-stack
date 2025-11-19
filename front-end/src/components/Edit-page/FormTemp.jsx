@@ -1,11 +1,11 @@
 import React from 'react'
 
-function FormTemp({textH , setTextH , textInf , setTextInf , link , setLink , setImgHandle , doProcess}) {
+function FormTemp({textH , setTextH , textInf , setTextInf , link , setLink , setImgHandle , doProcess , status , id}) {
     return (
         <>
 
             <form className='grid gap-5 text-3xl my-5'
-                onSubmit={doProcess}
+                onSubmit={status === 'edit' ? () => doProcess(id) : doProcess}
             >
 
                 {/* image */}

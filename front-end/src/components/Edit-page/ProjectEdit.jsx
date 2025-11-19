@@ -19,7 +19,7 @@ function ProjectEdit() {
 
   // message
 
-  const [massege , setMassege] = useState('') 
+  const [massege, setMassege] = useState('')
 
 
   // function file image handle
@@ -39,24 +39,43 @@ function ProjectEdit() {
 
   // call api method
 
-  // post 
-  const postAPI = async (e) => {
+
+
+
+  // Fetch API
+  const fetchAPI = async () => {
+
+    try {
+
+      const response = await axios.get('http://localhost:8000/project/get')
+      setData(response.data.info)
+
+    } catch (error) {
+
+      console.log('Something went wrong.', error.message)
+
+    }
+
+  }
+
+  // Call post API
+  const postData = async (e) => {
 
     e.preventDefault()
 
-    if (!textH || !textInf || !link ) {
+    if (!textH || !textInf || !link) {
 
       setMassege(<>
-      
+
         <ul className='text-red-600 w-100 text-2xl'>
 
           {img ? null : <li>- Please enter "Image"</li>}
           {textH ? null : <li>- Please enter "Topic"</li>}
           {textInf ? null : <li>- Please enter "Information"</li>}
-         {link ? null : <li>- Please enter "Link"</li>}
+          {link ? null : <li>- Please enter "Link"</li>}
 
         </ul>
-      
+
       </>)
     } else {
 
@@ -83,14 +102,23 @@ function ProjectEdit() {
 
   }
 
+  // Call put API
 
-  // Fetch API
-  const fetchAPI = async () => {
-
+  const editData = async (id) => {
+    
     try {
 
-      const response = await axios.get('http://localhost:8000/project/get')
-      setData(response.data.info)
+      const response = await axios.put(`http://localhost:8000/project/put/${id}`, {
+
+        img: img ,
+        text_head: textH ,
+        text_info: textInf ,
+        text_link: link 
+
+      })
+
+      console.log('Edit complete' , id)
+
 
     } catch (error) {
 
@@ -99,9 +127,6 @@ function ProjectEdit() {
     }
 
   }
-
-  // Call put API
-
 
 
   // Call delete API
@@ -166,7 +191,9 @@ function ProjectEdit() {
 
                     {editDisplay === n.id ?
 
-                      <FormTemp />
+                      <FormTemp textH={textH} setTextH={setTextH} textInf={textInf} setTextInf={setTextInf} link={link} setLink={setLink} setImgHandle={setImgHandle}
+
+                        doProcess={editData} status={'edit'} id={n.id}/>
 
                       : null}
 
@@ -190,12 +217,12 @@ function ProjectEdit() {
 
           <FormTemp textH={textH} setTextH={setTextH} textInf={textInf} setTextInf={setTextInf} link={link} setLink={setLink} setImgHandle={setImgHandle}
 
-            doProcess={postAPI} />
+            doProcess={postData} status ={'post'} id={''} />
 
-         
+
 
           : null}
-          {massege}
+        {massege}
         <Link to={'/edit'} className='bg-gray-200 hover:bg-gray-300 p-2 w-50 text-lg'>Go back to edit page</Link>
       </div>
 
