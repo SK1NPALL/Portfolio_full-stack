@@ -137,7 +137,7 @@ app.post('/project/post', async (req, res) => {
         res.json({
 
             message: 'Insert complete!',
-            info_insert : result[0]
+            info_insert: result[0]
 
         })
 
@@ -157,29 +157,29 @@ app.post('/project/post', async (req, res) => {
 
 // PUT project
 
-app.put('/project/put/:id', async(req, res) => {
+app.put('/project/put/:id', async (req, res) => {
 
-    try{   
-        
+    try {
+
         let id = req.params.id
         let data = req.body
 
-        const result = await conn.query('UPDATE project SET ? WHERE id = ?', [data,id])
+        const result = await conn.query('UPDATE project SET ? WHERE id = ?', [data, id])
 
         res.json({
 
-            message : "Update complete!",
-            id_update : id,
-            result : result[0]
+            message: "Update complete!",
+            id_update: id,
+            result: result[0]
 
         })
 
-    }catch(error) {
+    } catch (error) {
 
         console.log(error.message)
         res.status(500).json({
 
-            message : 'Something went wrong.'
+            message: 'Something went wrong.'
 
         })
 
@@ -221,22 +221,27 @@ app.delete('/project/delete', async (req, res) => {
 // Activities 
 
 // GET activ
-app.get('/activ/get' , async (req ,res) => {
+app.get('/activ/get', async (req, res) => {
 
-    try{
+    try {
 
         const result = await conn.query('SELECT * FROM activ')
 
         res.json({
 
-            message : 'Get information complete!',
-            info : result[0]
+            message: 'Get information complete!',
+            info: result[0]
 
         })
 
-    }catch(error) {
+    } catch (error) {
 
+        console.log(error.message)
+        res.status(500).json({
 
+            message: "Something went wrong."
+
+        })
 
     }
 
@@ -254,7 +259,7 @@ app.post('/activ/post', async (req, res) => {
         res.json({
 
             message: 'Insert complete!',
-            info_insert : result[0]
+            info_insert: result[0]
 
         })
 
@@ -274,29 +279,29 @@ app.post('/activ/post', async (req, res) => {
 
 // PUT activ
 
-app.put('/activ/put/:id', async(req, res) => {
+app.put('/activ/put/:id', async (req, res) => {
 
-    try{   
-        
+    try {
+
         let id = req.params.id
         let data = req.body
 
-        const result = await conn.query('UPDATE activ SET ? WHERE id = ?', [data,id])
+        const result = await conn.query('UPDATE activ SET ? WHERE id = ?', [data, id])
 
         res.json({
 
-            message : "Update complete!",
-            id_update : id,
-            result : result[0]
+            message: "Update complete!",
+            id_update: id,
+            result: result[0]
 
         })
 
-    }catch(error) {
+    } catch (error) {
 
         console.log(error.message)
         res.status(500).json({
 
-            message : 'Something went wrong.'
+            message: 'Something went wrong.'
 
         })
 

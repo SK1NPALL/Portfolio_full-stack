@@ -1,17 +1,41 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 function Activities() {
+
+    // fetch API
+
+    const fetchAPI = async() => {
+
+        try{
+            
+            const response = await axios.get('http://localhost:8000/activ/get')
+
+
+
+            setInfo_Activities(response.data.info)
+
+
+        }catch(error) {
+
+            console.log('Activities, Something went wrong' , error.message)
+
+        }
+
+    }
+
+    useEffect(() => {
+
+        fetchAPI()
+
+    },[])
 
     // Activities
 
     const [info_activities, setInfo_Activities] = useState([
         {
-
-            img: 'https://hackster.imgix.net/uploads/attachments/1462125/_nZSrwM084x.blob?auto=compress&w=1600&h=1200&fit=min&fm=jpg',
-            text_header: 'Lecturer in FROM CODE TO CIRCUIT CAMP',
-            text_info: 'You wake up in your home—disoriented, alone, and with no memory of who you are. Before you can gather your thoughts, a call comes in: your agency needs you to investigate a mysterious murder case that no one has been able to crack.',
-            github_url: 'https://github.com/AnMayVaa/The_Mystery'
 
         }
     ])
@@ -36,9 +60,9 @@ function Activities() {
 
                                     <div>
 
-                                        <p className='text-2xl'>{n.text_header}</p><br />
+                                        <p className='text-2xl'>{n.text_head}</p><br />
                                         <p className=''>{n.text_info}</p><br />
-                                        <a className='hover:text-blue-500' href={n.github_url} target='_blank'>View on github</a>
+                                        <a className='hover:text-blue-500' href={n.text_link} target='_blank'>View on github</a>
 
                                     </div>
 
