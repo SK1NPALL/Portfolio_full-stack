@@ -155,7 +155,7 @@ app.post('/project/post', async (req, res) => {
 
 })
 
-// PUT
+// PUT project
 
 app.put('/project/put/:id', async(req, res) => {
 
@@ -216,7 +216,122 @@ app.delete('/project/delete', async (req, res) => {
 
     }
 
+})
 
+// Activities 
+
+// GET activ
+app.get('/activ/get' , async (req ,res) => {
+
+    try{
+
+        const result = await conn.query('SELECT * FROM activ')
+
+        res.json({
+
+            message : 'Get information complete!',
+            info : result[0]
+
+        })
+
+    }catch(error) {
+
+
+
+    }
+
+})
+
+// POST activ
+app.post('/activ/post', async (req, res) => {
+
+    try {
+
+        let info = req.body
+        const result = await conn.query('INSERT INTO activ SET ?', info)
+
+
+        res.json({
+
+            message: 'Insert complete!',
+            info_insert : result[0]
+
+        })
+
+    } catch (error) {
+
+        console.log(error.message)
+
+        res.status(500).json({
+
+            message: 'Something went wrong.'
+
+        })
+
+    }
+
+})
+
+// PUT activ
+
+app.put('/activ/put/:id', async(req, res) => {
+
+    try{   
+        
+        let id = req.params.id
+        let data = req.body
+
+        const result = await conn.query('UPDATE activ SET ? WHERE id = ?', [data,id])
+
+        res.json({
+
+            message : "Update complete!",
+            id_update : id,
+            result : result[0]
+
+        })
+
+    }catch(error) {
+
+        console.log(error.message)
+        res.status(500).json({
+
+            message : 'Something went wrong.'
+
+        })
+
+    }
+
+})
+
+// DELETE project
+app.delete('/activ/delete', async (req, res) => {
+
+    try {
+
+        let number = req.body
+
+        const result = await conn.query('DELETE FROM activ WHERE id = ?', number.id)
+
+        res.json({
+
+            message: 'Delte complete!',
+            id_deleted: number
+
+        })
+
+    } catch (error) {
+
+        console.log(error.message)
+
+        res.json({
+
+            message: 'Something went wrong.'
+
+        })
+
+
+    }
 
 })
 

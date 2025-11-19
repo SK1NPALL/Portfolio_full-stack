@@ -46,7 +46,7 @@ function ActivitiesEdit() {
 
     try {
 
-      const response = await axios.get('http://localhost:8000/project/get')
+      const response = await axios.get('http://localhost:8000/activ/get')
       setData(response.data.info)
 
     } catch (error) {
@@ -80,7 +80,7 @@ function ActivitiesEdit() {
 
       try {
 
-        const response = await axios.post('http://localhost:8000/project/post',
+        const response = await axios.post('http://localhost:8000/activ/post',
 
           {
             img: img,
@@ -107,7 +107,7 @@ function ActivitiesEdit() {
 
     try {
 
-      const response = await axios.put(`http://localhost:8000/project/put/${id}`, {
+      const response = await axios.put(`http://localhost:8000/activ/put/${id}`, {
 
         img: img,
         text_head: textH,
@@ -133,7 +133,7 @@ function ActivitiesEdit() {
 
     try {
 
-      const response = await axios.delete('http://localhost:8000/project/delete', { data: { id: id } })
+      const response = await axios.delete('http://localhost:8000/activ/delete', { data: { id: id } })
 
       console.log('Delete complete!', response.data)
 
@@ -151,7 +151,7 @@ function ActivitiesEdit() {
     <>
       <div className='container grid grid-cols-1 w-50 gap-5 m-10 text-xl'>
 
-        <h1 className='text-5xl font-bold w-100'>Project List</h1>
+        <h1 className='text-5xl font-bold w-100'>Activities List</h1>
 
         <table >
           <thead>
