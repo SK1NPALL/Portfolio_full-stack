@@ -46,7 +46,7 @@ function AboutMe() {
                 <div className='container mx-auto w-290'>
                     
                     <div className='flex gap-10 items-center'>
-                        <img className="lg:w-100 p-7 md:w-90" src={`http://localhost:8000/uploads/${img_aboutme}`} alt="my_picture" />
+                        <img className="lg:w-100 p-7 md:w-90" src={img_aboutme} alt="my_picture" />
                         <p className='text-2xl text-slate-500'>{text_aboutme}</p>
                     </div>
                 </div>

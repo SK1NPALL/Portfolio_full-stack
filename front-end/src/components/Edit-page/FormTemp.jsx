@@ -5,17 +5,12 @@ function FormTemp({textH , setTextH , textInf , setTextInf , link , setLink , se
         <>
 
             <form className='grid gap-5 text-3xl my-5'
-
-                action="http://localhost:8000/multer" 
-                encType="multipart/form-data" 
-                method="post" 
                 onSubmit={doProcess}
             >
 
                 {/* image */}
                 <p>Picture : <input type="file"
                     className='border text-lg '
-                    name="uploaded_file" 
                     onChange={setImgHandle}
                     accept='image/*' 
                     /></p>

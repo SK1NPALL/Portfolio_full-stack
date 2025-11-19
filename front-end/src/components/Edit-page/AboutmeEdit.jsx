@@ -76,16 +76,13 @@ function AboutmeEdit() {
 
                 <div className='grid grid-rows-3 '>
 
-                    <form action="http://localhost:8000/multer" 
+                    <form  
                     className='row-span-2' 
-                    encType="multipart/form-data" 
-                    method="post" 
                     onSubmit={updateAboutme}>
 
                         <p>Image :
                             
                             <input type="file" 
-                            name="uploaded_file" 
                             onChange={setImageHandle} 
                             accept='image/*'
                             className='border'
