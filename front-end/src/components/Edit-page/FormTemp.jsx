@@ -1,19 +1,24 @@
 import React from 'react'
 
-function FormTemp({textH , setTextH , textInf , setTextInf , link , setLink , setImgHandle , doProcess , status , id}) {
+function FormTemp({ textH, setTextH, textInf, setTextInf, link, setLink, setImgHandle, doProcess, status, id }) {
     return (
         <>
 
             <form className='grid gap-5 text-3xl my-5'
                 onSubmit={status === 'edit' ? () => doProcess(id) : doProcess}
+
+                action="http://localhost:8000/uploads"
+                method="post"
+                enctype="multipart/form-data"
             >
 
                 {/* image */}
                 <p>Picture : <input type="file"
                     className='border text-lg '
                     onChange={setImgHandle}
-                    accept='image/*' 
-                    /></p>
+                    accept='image/*'
+                    name='avatar'
+                /></p>
 
                 {/* head text */}
                 <p>Topic : <input

@@ -56,7 +56,7 @@ function Activities() {
                             <>
                                 <div className='grid grid-cols-2 border-2 border-slate-300 p-5 gap-5 items-center'>
 
-                                    <img key={i} src={n.img} className="w-90" alt="" />
+                                    <img key={i} src={`http://localhost:8000/uploads/${n.img}`} className="w-90" alt="" />
 
                                     <div>
 

@@ -63,7 +63,7 @@ function ProjectEdit() {
 
     e.preventDefault()
 
-    if (!textH || !textInf || !link) {
+    if (!img || !textH || !textInf || !link) {
 
       setMassege(<>
 
