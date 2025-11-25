@@ -5,6 +5,7 @@ const mysql = require('mysql2/promise')
 const app = express()
 const port = Number(process.env.PORT)
 
+const multer = require('multer')
 app.use(express.json())
 app.use(cors())
 
@@ -17,11 +18,41 @@ const initMySQL = async () => {
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE_1,
-        port : 3306
+        port: 3306
 
     })
 
 }
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+        const fileName = file.originalname
+        cb(null, fileName)
+    }
+})
+
+const upload = multer({ storage })
+
+// For uploads
+
+app.post('/uploads', upload.single('avatar'), async (req, res) => {
+
+    try {
+
+        res.send("Upload image complete")
+
+    } catch (error) {
+
+        console.log(error.message)
+        res.send("Something went worng!")
+
+    }
+
+})
+
 
 // ABOUT ME
 
