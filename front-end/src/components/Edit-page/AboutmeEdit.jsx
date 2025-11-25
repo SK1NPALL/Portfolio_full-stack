@@ -78,7 +78,10 @@ function AboutmeEdit() {
 
                     <form  
                     className='row-span-2' 
-                    onSubmit={updateAboutme}>
+                    onSubmit={updateAboutme}
+                    action="http://localhost:8000/uploads" 
+                    method="post" 
+                    enctype="multipart/form-data">
 
                         <p>Image :
                             
@@ -86,6 +89,7 @@ function AboutmeEdit() {
                             onChange={setImageHandle} 
                             accept='image/*'
                             className='border'
+                            name='avatar'
                             /></p>
 
                         <p>Info :

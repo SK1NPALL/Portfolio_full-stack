@@ -8,6 +8,7 @@ const port = Number(process.env.PORT)
 const multer = require('multer')
 app.use(express.json())
 app.use(cors())
+app.use('/uploads', express.static('uploads'))
 
 let conn = null;
 
