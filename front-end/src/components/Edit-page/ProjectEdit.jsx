@@ -61,8 +61,6 @@ function ProjectEdit() {
   // Call post API
   const postData = async (e) => {
 
-    e.preventDefault()
-
     if (!img || !textH || !textInf || !link) {
 
       setMassege(<>

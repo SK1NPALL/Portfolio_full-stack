@@ -5,11 +5,10 @@ function FormTemp({ textH, setTextH, textInf, setTextInf, link, setLink, setImgH
         <>
 
             <form className='grid gap-5 text-3xl my-5'
-                onSubmit={status === 'edit' ? () => doProcess(id) : doProcess}
-
                 action="http://localhost:8000/uploads"
                 method="post"
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
+                onSubmit={status === 'edit' ? () => doProcess(id) : doProcess}
             >
 
                 {/* image */}

@@ -81,7 +81,7 @@ function AboutmeEdit() {
                     onSubmit={updateAboutme}
                     action="http://localhost:8000/uploads" 
                     method="post" 
-                    enctype="multipart/form-data">
+                    encType="multipart/form-data">
 
                         <p>Image :
                             
