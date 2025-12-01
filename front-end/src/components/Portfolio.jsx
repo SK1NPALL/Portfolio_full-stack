@@ -8,13 +8,11 @@ import Contact from './Home-page/Contact'
 function Portfolio() {
 
     return (
-        <>
-            
-            <NavBar/>
+        <>  
 
             {/* main */}
-            <main>
-
+            <main className='bg-[url(C:\Users\max09\Desktop\coding\web\github\Portfolio_full-stack\front-end\src\components\image\bg-image-2.png)] bg-fixed bg-top bg-cover bg-opacity-30 '>
+                <NavBar/>
                 <AboutMe />
                 <Project />
                 <Activities/>

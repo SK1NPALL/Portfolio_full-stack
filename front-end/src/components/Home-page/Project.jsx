@@ -38,7 +38,7 @@ function Project() {
     return (
         <>
             {/* Project */}
-            <article className='bg-slate-300 ' id='proj'>
+            <article className='' id='proj'>
 
                 <div className='p-10'>
 

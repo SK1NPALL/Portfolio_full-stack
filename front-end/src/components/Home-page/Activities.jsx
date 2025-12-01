@@ -43,7 +43,7 @@ function Activities() {
         <>
 
             {/* Activities */}
-            <article className='bg-slate-200' id='acti'>
+            <article className='' id='acti'>
 
                 <div className='p-10'>
 
